@@ -3,7 +3,7 @@ base_url = "https://blog.cameron.rs"
 
 title="cameron - software engineer"
 
-description = "This is my blog where I post about my random thoughts"
+description = "This is my blog where I sometimes write about my random thoughts"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
