@@ -1,0 +1,97 @@
+{% import "macros/page.html" as page_macros %}
+<!DOCTYPE html>
+<html lang="{% if lang %}{{ lang }}{% else %}en{% endif %}">
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    {% block title %}
+        <title>{{ config.title }}</title>
+        <meta property="og:title" content="{{ config.title }}"/>
+        <meta name="twitter:title" content="{{ config.title }}" />
+    {% endblock title %}
+
+    {% block description %}
+        <meta name="description" content="{{ config.description }}"/>
+        <meta property="og:description" content="{{ config.description }}"/>
+        <meta name="twitter:description" content="{{ config.description }}" />
+    {% endblock description %}
+
+    <meta name="author" content="Cameron"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cameron.rs" />
+    <meta property="og:site_name" content="cameron.rs" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+    />
+    <link rel="stylesheet" href="/styles/main.css">
+
+    {% if config.generate_feed %}
+        <link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">
+    {% endif %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+    <script
+      src="https://kit.fontawesome.com/6029373499.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <div class="container">
+        <nav> 
+            <a class="heading-link" href="https://cameron.rs">
+                <strong>cameron.rs</strong>
+            </a>
+            <div class="links">
+                {% for menu_link in config.extra.menu_links %}
+                    {% set link_url = menu_link.url | replace(from="$BASE_URL", to=config.base_url) %}
+                    <a {% if current_url and current_url == link_url %}class="active"{% endif %} href="{{ link_url }}">{{menu_link.name}}</a>
+                {% endfor %}
+            </div>
+        </nav>
+    
+        <main id="main" tabindex="-1">
+            {% block content %}
+                {% if paginator.pages %}
+                    <div class="tag-container">
+                        <div class="tags">
+                            {% set tags = get_taxonomy(kind="tags") %}
+                            {% for term in tags.items %}
+                                <a class="tag" href="{{ term.permalink | safe }}">
+                                    <i class="fa-solid fa-tag"></i>
+                                    {{ term.name }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% for page in paginator.pages %}
+                        {{ page_macros::page_listing(page=page) }}
+                    {% endfor %}
+                    
+                    {% if paginator.previous or paginator.next %}
+                        {{ page_macros::page_pagination(paginator=paginator) }}
+                    {% endif %}
+                {% else %}
+                    {% for page in section.pages %}
+                        {{ page_macros::page_listing(page=page) }}
+                    {% endfor %} 
+                {% endif %}
+            {% endblock content %}
+        </main>
+        <footer>
+            <p>
+                {{ config.title | safe }} © {{ now() | date(format="%Y") }}<br>
+            </p>
+            <p>
+                {% block footer %}
+                {% endblock footer %}
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

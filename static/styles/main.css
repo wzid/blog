@@ -1,0 +1,128 @@
+@import "https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap";
+@import url(parent.css);
+@import url(table.css);
+@import url(nav.css);
+@import url(pagnation.css);
+@import url(tags.css);
+@import url(article.css);
+
+/* Basic */
+@font-face {
+  font-family: Inter;
+  src: url("fonts/inter.woff2") format("woff2");
+}
+
+:root {
+  --orange: #e78a4e;
+  --green: #a9b665;
+  --pink: #e86a92;
+  --celadon: #b3dec1;
+  --dark-pink: #d02058;
+  --highlight: #615856;
+  --gray: #797279;
+  --gray-light: #a6a0a6;
+  --text-important: #EAEAEA;
+  --text-color: #C5C5C5;
+  --text-gray: #b6b6b6;
+  --background: #292729;
+  --background-lighter: #3a3639;
+  --background-lightest: #4a454a;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Inter, sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* Links */
+
+/* Table */
+
+/* Code */
+pre {
+  padding: 1em;
+  background-color: red;
+  max-width: 100%;
+  overflow: auto;
+}
+
+code,
+pre,
+kbd {
+  font-family: Jetbrains Mono, Menlo, monospace;
+  font-size: 0.9em;
+  line-height: 154%;
+}
+
+/* Styles */
+
+blockquote {
+  border-left: 3px solid var(--gray);
+  border-radius: 0.4rem;
+  background: var(--background-lighter);
+  padding: 0.1em 1em;
+  margin-left: 0.75em;
+}
+
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--gray);
+}
+
+ul ol,
+ol ol,
+ul ul {
+  margin: 0em 1rem;
+}
+
+/* Pages */
+main h1 {
+  margin-top: 1em;
+  font-weight: normal;
+  line-height: 1.1em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+
+.post-short-list:first-of-type {
+  margin-top: 1em;
+}
+
+/* Articles */
+
+/* Tags */
+
+/* Pagination */
+
+/* Footer */
+footer {
+  border-top: thin solid var(--gray);
+  margin-top: 3em;
+  font-size: 16px;
+}
+
+ul.language-select {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+}
+
+ul.language-select > li {
+  margin-right: 1em;
+}
+
+/* Media Queries */
+
+@media (max-width: 840px) {
+  blockquote {
+    line-height: 1.5rem;
+    font-size: 1rem;
+    padding: 0.1em 1em;
+    margin-left: 0.75em;
+  }
+}

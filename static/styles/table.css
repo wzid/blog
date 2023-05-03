@@ -1,0 +1,33 @@
+table {
+  display: inline-block;
+  overflow: auto;
+  max-width: 100%;
+  border-spacing: 0;
+  border-radius: 0.4rem;
+  border: 1.5px solid var(--gray);
+}
+
+thead {
+  background: var(--background-lighter);
+}
+
+th,
+td {
+  padding: 0.5em 1em;
+}
+
+tbody tr:nth-child(2n + 1) {
+  background-color: var(--background-lightest);
+}
+
+table tr:nth-child(2n) {
+  /* */
+  background-color: var(--background-lighter);
+}
+
+@media (max-width: 840px) {
+  table {
+    overflow: auto;
+    font-size: 1rem;
+  }
+}

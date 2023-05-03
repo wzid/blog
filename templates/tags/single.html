@@ -1,0 +1,21 @@
+{% import "macros/page.html" as page_macros %}
+{% extends "index.html" %}
+
+{% block title %}
+<title>{
+    {{ term.name }}
+</title>
+<meta property="og:title" content="{{ term.name }}"/>
+{% endblock title%}
+
+{% block content %}
+<div class="tag-title">
+    <i class="fa-solid fa-tag"></i>
+    <h1> {{ term.name }} </h1>
+</div>
+
+{% for page in term.pages %}
+{{ page_macros::page_listing(page=page) }}
+{% endfor %}
+
+{% endblock content %}
