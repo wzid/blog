@@ -30,11 +30,12 @@ a.active {
   text-decoration: 1px underline;
 }
 
-
 @media (max-width: 840px) {
-
+  nav {
+    flex-direction: column;
+  }
   .links {
-    font-size: .95rem;
+    font-size: 0.95rem;
     display: inline;
   }
 

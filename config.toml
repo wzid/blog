@@ -26,5 +26,6 @@ highlight_theme = "charcoal"
 anpu_date_format="%B %e %Y"
 menu_links = [
     { url = "$BASE_URL/", name = "Blog" },
+    { url = "https://projects.cameron.rs", name = "Projects" },
     { url = "https://docs.cameron.rs", name = "Documentation" },
 ]
