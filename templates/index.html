@@ -1,6 +1,6 @@
 {% import "macros/page.html" as page_macros %}
 <!DOCTYPE html>
-<html lang="{% if lang %}{{ lang }}{% else %}en{% endif %}">
+<html data-theme="mytheme" lang="{% if lang %}{{ lang }}{% else %}en{% endif %}">
 <head>
     <meta charset="utf-8">
     <meta name="HandheldFriendly" content="True">
@@ -28,11 +28,13 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
     />
-    <link rel="stylesheet" href="/styles/main.css">
 
     {% if config.generate_feed %}
         <link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">
     {% endif %}
+
+    {# Tailwind CSS #}
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     {% block extra_head %}
     {% endblock extra_head %}
@@ -42,39 +44,64 @@
     ></script>
 </head>
 <body>
-    <div class="container">
-        <nav> 
-            <a class="heading-link" href="https://cameron.rs">
-                <strong>cameron.rs</strong>
-            </a>
-            <div class="links">
-                {% for menu_link in config.extra.menu_links %}
-                    {% set link_url = menu_link.url | replace(from="$BASE_URL", to=config.base_url) %}
-                    <a {% if current_url and current_url == link_url %}class="active"{% endif %} href="{{ link_url }}">{{menu_link.name}}</a>
-                {% endfor %}
-            </div>
-        </nav>
-    
-        <main id="main" tabindex="-1">
+    <div class="flex flex-col items-center h-full">
+        <div class="flex justify-center w-full">
+            <nav class="navbar lg:w-5/6">
+                <div class="flex-1">
+                    <a class="btn btn-ghost normal-case text-2xl font-bold" href="https://cameron.rs">
+                        <span class="">cameron</span>
+                        <span class="text-primary">.rs</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex flex-none text-lg">
+                    <ul class="menu menu-horizontal px-1">
+                        {% for menu_link in config.extra.menu_links %}
+                            {% set link_url = menu_link.url | replace(from="$BASE_URL", to=config.base_url) %}
+                            <li><a href="{{ link_url }}">{{menu_link.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="dropdown dropdown-bottom dropdown-end md:hidden flex-none text-xl">
+                    <label tabindex="0" class="btn btn-ghost btn-circle">
+                        <i class="fa-solid fa-bars"></i>
+                    </label>
+                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        {% for menu_link in config.extra.menu_links %}
+                            {% set link_url = menu_link.url | replace(from="$BASE_URL", to=config.base_url) %}
+                            <li><a href="{{ link_url }}">{{menu_link.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <main class="pt-8 w-11/12 lg:w-3/4 mb-[6rem]" id="main" tabindex="-1">
             {% block content %}
                 {% if paginator.pages %}
-                    <div class="tag-container">
-                        <div class="tags">
-                            {% set tags = get_taxonomy(kind="tags") %}
-                            {% for term in tags.items %}
-                                <a class="tag" href="{{ term.permalink | safe }}">
-                                    <i class="fa-solid fa-tag"></i>
-                                    {{ term.name }}
-                                </a>
-                            {% endfor %}
-                        </div>
+                    <div>
+                        {% set tags = get_taxonomy(kind="tags") %}
+                        {% for term in tags.items %}
+                            <a class="tag-button" href="{{ term.permalink | safe }}">
+                                #{{ term.name }}
+                            </a>
+                        {% endfor %}
+                        <div class="divider my-2"></div>
                     </div>
+
+                    {% set pages_length = paginator.pages | length %}
                     {% for page in paginator.pages %}
                         {{ page_macros::page_listing(page=page) }}
+
+                        {# This is the divider between post listings #}
+                        {% if loop.index != pages_length %}
+                            <div class="divider"></div>
+                        {% endif %}
                     {% endfor %}
                     
                     {% if paginator.previous or paginator.next %}
-                        {{ page_macros::page_pagination(paginator=paginator) }}
+                        <div class="flex justify-center">
+                            {{ page_macros::page_pagination(paginator=paginator) }}
+                        </div>
                     {% endif %}
                 {% else %}
                     {% for page in section.pages %}
@@ -83,15 +110,24 @@
                 {% endif %}
             {% endblock content %}
         </main>
-        <footer>
-            <p>
-                {{ config.title | safe }} © {{ now() | date(format="%Y") }}<br>
-            </p>
-            <p>
-                {% block footer %}
-                {% endblock footer %}
-            </p>
-        </footer>
+        <div class="flex w-full mt-auto bg-neutral justify-center">
+            <footer class="footer lg:w-5/6 items-center p-4 text-neutral-content">
+                <p>
+                    {{ config.title | safe }} © {{ now() | date(format="%Y") }}<br>
+                </p>
+                <div class="text-2xl grid-flow-col gap-5 md:place-self-center md:justify-self-end">
+                    <a class="link" href="{{ config.extra.github }}">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a class="link" href="{{ config.extra.linkedin }}">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a class="link" href="mailto:{{ config.extra.email }}">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </footer>
+        </div>
     </div>
 </body>
 </html>

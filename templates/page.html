@@ -14,13 +14,16 @@
 {% endblock description %}
 
 {% block content %}
-<article class="post">
-    <header>
+<article>
+    <header class="text-[2.75rem] leading-tight font-bold">
         <h1>{{ page.title }}</h1>
     </header>
     
-    {{ page_macros::page_info(page=page) }}
-    <div class="content">
+    <div class="text-lg">
+        {{ page_macros::page_info(page=page, large=true) }}
+    </div>
+
+    <div class="markdown-content">
         {{ page.content | safe }}
     </div>
 

@@ -9,13 +9,19 @@
 {% endblock title%}
 
 {% block content %}
-<div class="tag-title">
-    <i class="fa-solid fa-tag"></i>
-    <h1> {{ term.name }} </h1>
-</div>
+<h1 class="badge badge-primary h-11 pb-1 text-4xl font-bold"> 
+    #{{ term.name }}
+</h1>
 
+<div class="divider"></div>
+
+{% set pages_length = term.pages | length %}
 {% for page in term.pages %}
-{{ page_macros::page_listing(page=page) }}
+    {{ page_macros::page_listing(page=page) }}
+    {# This is the divider between post listings #}
+    {% if loop.index != pages_length %}
+        <div class="divider"></div>
+    {% endif %}
 {% endfor %}
 
 {% endblock content %}

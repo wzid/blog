@@ -1,35 +1,32 @@
-{% macro page_info(page) %}
-    <div class="article-info">
-        {% if page.date %}
-            <div class="article-date">{{ page.date | date(format=config.extra.anpu_date_format) }} </div>
-        {% endif %}
-        <div class="reading-time">
-            {{ page.reading_time }} minute reading time
-        </div>
-        <div class="article-taxonomies">
-            {% if page.taxonomies.tags %}
-                <div class="article-tags">
-                    {% for tag in page.taxonomies.tags %}
-                    <a class="tag" href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">
-                        <i class="fa-solid fa-tag"></i>
-                        {{ tag }}
-                    </a>
-                    {% endfor %}
+{% macro page_info(page, large) %}
+    {% if page.date %}
+        <div>{{ page.date | date(format=config.extra.anpu_date_format) }} </div>
+    {% endif %}
+    <div>
+        {{ page.reading_time }} mins read
+    </div>
+    <div class="article-taxonomies">
+        {% if page.taxonomies.tags %}
+            <div class="article-tags">
+                {% for tag in page.taxonomies.tags %}
+                <div class="{% if large %} tag-lg mt-1 {% else %} tag {% endif %}">
+                    #{{ tag }}
                 </div>
-            {% endif %}
-        </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endmacro page_info %}
 
 {% macro page_listing(page) %}
-    <article class="post-list">
-        <header> 
-            <a href="{{ page.permalink }}">{{ page.title }}</a>
+    <article>
+        <header class="text-2xl md:text-3xl font-bold"> 
+            <a class="underline hover:decoration-dotted decoration-transparent hover:decoration-inherit" href="{{ page.permalink }}">{{ page.title }}</a>
         </header>
-        {{ self::page_info(page=page) }}
+        {{ self::page_info(page=page, large=false) }}
 
         {% if page.summary %}
-        <div class="post-summary">
+        <div class="pt-2">
             {{ page.summary | markdown | safe }}
         </div>
         {% endif %}
@@ -38,18 +35,8 @@
 {% endmacro page_listing %}
 
 {% macro page_pagination(paginator) %}
-    <div class="pagination">
-        <a href="{{ paginator.previous }}" class="left pagination-item {% if not paginator.previous %}disabled{% endif %}">
-            {% if paginator.previous %}
-                <i class="fa-solid fa-arrow-left"></i>
-                <p>Newer Posts</p>
-            {% endif %}
-        </a>
-        <a href="{{ paginator.next }}" class="right pagination-item {% if not paginator.next %}disabled{% endif %}">
-            {% if paginator.next %}
-            <p>Older Posts</p>
-            <i class="fa-solid fa-arrow-right"></i>
-            {% endif %}
-        </a>
+    <div class="btn-group grid grid-cols-2 mt-10 md:w-2/5">
+        <a class="btn {% if paginator.previous %} btn-outline {% else %} btn-disabled {% endif %}" href="{{ paginator.previous }}">Newer Posts</a>
+        <a class="btn {% if paginator.next %} btn-outline {% else %} btn-disabled {% endif %}" href="{{ paginator.next }}">Older Posts</a>
     </div>
 {% endmacro page_pagination %}

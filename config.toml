@@ -6,10 +6,11 @@ title="cameron - software engineer"
 description = "This is my blog where I sometimes write about my random thoughts"
 
 # Whether to automatically compile all Sass files in the sass directory
-compile_sass = false
+compile_sass = true
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
+
 
 taxonomies = [
     { name = "tags" },
@@ -20,8 +21,12 @@ taxonomies = [
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
 highlight_theme = "charcoal"
+render_emoji = true
 
 [extra]
+github="https://github.com/wzid"
+linkedin="https://www.linkedin.com/in/cameron-k-a00565257"
+email="me@cameron.rs"
 # Put all your custom variables here
 anpu_date_format="%B %e %Y"
 menu_links = [

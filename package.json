@@ -1,0 +1,23 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "cameron's blog",
+  "scripts": {
+    "build": "zola build && npx tailwindcss -i ./public/input.css -o ./public/style.css -m",
+    "serve": "zola serve --interface 127.0.0.1 & npx tailwindcss -i ./public/input.css -o ./public/style.css --watch && wait",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wzid/blog.git"
+  },
+  "author": "cameron",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "tailwindcss": "^3.3.1"
+  },
+  "dependencies": {
+    "daisyui": "^2.52.0"
+  }
+}
