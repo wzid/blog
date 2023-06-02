@@ -2,7 +2,7 @@
 @tailwind base;
 @layer base {
     body {
-      @apply font-sans h-screen text-text_color bg-background;
+      @apply font-sans h-screen text-text_color bg-background dark:bg-text_color dark:text-background;
     }
 }  
 
@@ -13,11 +13,11 @@
 @tailwind utilities;
 
 .tag-button {
-  @apply badge text-base badge-primary h-6 hover:bg-primary-focus;
+  @apply border-0 badge text-base badge-primary h-6 hover:bg-primary-focus;
 }
 
 .badge-ghost {
-  @apply bg-base-300 text-base-content;
+  @apply bg-base-300 dark:bg-accent text-base-content dark:text-accent-content;
 }
 
 .tag {
