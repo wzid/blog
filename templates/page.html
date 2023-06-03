@@ -15,11 +15,11 @@
 
 {% block content %}
 <article>
-    <header class="text-[2.75rem] leading-tight font-bold">
+    <header class="text-3xl md:text-4xl lg:text-[2.75rem] leading-tight font-bold">
         <h1>{{ page.title }}</h1>
     </header>
     
-    <div class="text-lg">
+    <div class="text-base md:text-lg">
         {{ page_macros::page_info(page=page, large=true) }}
     </div>
 

@@ -25,5 +25,5 @@
 }
 
 .tag-lg {
-  @apply badge text-lg h-6 badge-ghost;
+  @apply badge text-base md:text-lg h-6 badge-ghost;
 }

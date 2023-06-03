@@ -47,7 +47,7 @@
 <body>
   <div class="flex flex-col items-center h-full">
     {{ element_macros::navbar() }}
-    <main class="pt-8 w-11/12 lg:w-3/4 mb-[6rem]" id="main" tabindex="-1">
+    <main class="pt-8 w-11/12 lg:w-3/4 mb-12 md:mb-[6rem]" id="main" tabindex="-1">
       {% block content %}
         {% if paginator.pages %}
           <div>
