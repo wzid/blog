@@ -12,7 +12,7 @@ In January, I landed an interview for an internship at Lenovo for a Java Enginee
 
 <!-- more -->
 
-I did not end up getting the internship. Ultimately I was given the harshest punshiment of all, getting ghosted.
+I did not end up getting the internship. Ultimately I was given the harshest punishment of all, getting ghosted.
 
 # Reflections
 
