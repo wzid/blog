@@ -24,6 +24,7 @@ highlight_theme = "charcoal"
 render_emoji = true
 
 [extra]
+image_api="https://og.cameron.rs/api/"
 github="https://github.com/wzid"
 linkedin="https://www.linkedin.com/in/cameron-k-a00565257"
 email="me@cameron.rs"

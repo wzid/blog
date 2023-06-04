@@ -1,11 +1,13 @@
 {% import "macros/page.html" as page_macros %}
 {% extends "index.html" %}
 
-{% block title %}
+{% block data %}
 <title> {{ page.title }} </title>
 <meta property="og:title" content="{{ page.title }}"/>
 <meta name="twitter:title" content="{{ page.title }}" />
-{% endblock %}
+<meta property="og:image" content="https://og.cameron.rs/api/blog?title={{ page.title }}&date={{page.date}}" />
+<meta name="twitter:image" content="https://og.cameron.rs/api/blog?title={{ page.title }}&date={{page.date}}" />
+{% endblock data %}
 
 {% block description %}
     <meta name="description" content="{{ page.description }}"/>
