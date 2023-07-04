@@ -7,10 +7,11 @@ date = 2023-05-01
 tags = ["talk"]
 +++
 
-In January, I landed an interview for an internship at Lenovo for a Java Engineering position. My confidence was super high because I've been coding in Java for 3 years and I knew there was no question that I could not answer confidently. Ironicaly enough, that was not true. What I didn't expect was the interviewer asking me about my personal projects. I didn't have any. Almost nothing was listed on my GitHub profile. I started talking to him about some of the projects I had done and not uploaded but this was to no avail. After my explanation he replied, "You really should put your projects on your GitHub, because it's the first thing I looked at on your resume." In the moment I did not take his words to heart and just nodded along.
-
+In January, I landed an interview for an internship at Lenovo for a Java Engineering position. My confidence was super high because I've been coding in Java for 3 years and I knew there was no question that I could not answer confidently. Ironicaly enough, that was not true. What I didn't expect was the interviewer asking me about my personal projects. I didn't have any.
 
 <!-- more -->
+
+Almost nothing was listed on my GitHub profile. I started talking to him about some of the projects I had done and not uploaded but this was to no avail. After my explanation he replied, "You really should put your projects on your GitHub, because it's the first thing I looked at on your resume." In the moment I did not take his words to heart and just nodded along.
 
 I did not end up getting the internship. Ultimately I was given the harshest punshiment of all, getting ghosted.
 

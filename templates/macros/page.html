@@ -1,9 +1,10 @@
 {% macro page_info(page, large) %}
     {% if page.date %}
         <div>{{ page.date | date(format=config.extra.anpu_date_format) }} </div>
+        &bull;
     {% endif %}
     <div>
-        {{ page.reading_time }} mins read
+        {{ page.reading_time }} min read
     </div>
     <div class="article-taxonomies">
         {% if page.taxonomies.tags %}
@@ -20,13 +21,15 @@
 
 {% macro page_listing(page) %}
     <article>
-        <header class="text-2xl md:text-3xl font-bold"> 
+        <header class="text-2xl md:text-3xl lg:text-4xl font-bold"> 
             <a class="underline hover:decoration-dotted decoration-transparent hover:decoration-inherit" href="{{ page.permalink }}">{{ page.title }}</a>
         </header>
-        {{ self::page_info(page=page, large=false) }}
+        <div class="flex flex-row gap-2 md:text-lg pt-1 ">
+            {{ self::page_info(page=page, large=false) }}
+        </div>
 
         {% if page.summary %}
-        <div class="pt-2">
+        <div class="pt-2 md:text-lg">
             {{ page.summary | markdown | safe }}
         </div>
         {% endif %}

@@ -21,8 +21,8 @@
         <h1>{{ page.title }}</h1>
     </header>
     
-    <div class="text-base md:text-lg">
-        {{ page_macros::page_info(page=page, large=true) }}
+    <div class="flex flex-row gap-2 text-lg mt-2">
+        {{ page_macros::page_info(page=page, large=false) }}
     </div>
 
     <div class="markdown-content">

@@ -8,7 +8,7 @@ module.exports = {
         mytheme: {
           primary: "#0072B5",
           secondary: "#e86a92",
-          neutral: "#292929",
+          neutral: "#171717",
           "base-100": "#f7f7f7",
           accent: "#737373",
           error: "#C8C8C8",
@@ -19,7 +19,7 @@ module.exports = {
           primary: "#e86a92",
           secondary: "#0072B5",
           neutral: "#f7f7f7",
-          "base-100": "#282729",
+          "base-100": "#171717",
           accent: "#737373",
           error: "#202021",
         },
@@ -32,8 +32,8 @@ module.exports = {
         sans: ["Source Sans Pro", "Segoe UI", "sans-serif"],
       },
       colors: {
-        text_color: "#282729",
-        background: "#f7f9f7",
+        text_color: "#171717",
+        background: "#D4D4D4",
       },
     },
   },
